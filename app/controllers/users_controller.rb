@@ -4,6 +4,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        #Get user
+        #Get current user
     end
 end
