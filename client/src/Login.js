@@ -9,13 +9,13 @@ const Login = () => {
 
 
   const handleSubmit = (e) => {
-    e.preventDefaul()
+    e.preventDefault()
     fetch('/login', {
       method: "POST", 
       headers: { "Content-Type" : "application/json"},
       body: JSON.stringify({
         username: username,
-        password: setPassword
+        password: password
       })
     })
     .then(response => response.json())

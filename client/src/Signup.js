@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { UserContext } from './context/AuthContext'
 
+
 const Signup = () => {
   const [name, setName] = useState("")
   const [username, setUsername] = useState("")
