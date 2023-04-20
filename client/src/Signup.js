@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import { UserContext } from './context/AuthContext'
 
 const Signup = () => {
+  const [name, setName] = useState("")
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
@@ -15,6 +16,7 @@ const Signup = () => {
       method: "POST",
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
+        name: name,
         username: username,
         password: password,
         password_confirmation: passwordConfirmation
@@ -25,6 +27,7 @@ const Signup = () => {
       if (!user.errors) {
         signup(user)
       } else {
+        setName('')
         setUsername('')
         setPassword('')
         setPasswordConfirmation('')
@@ -38,6 +41,13 @@ const Signup = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <label> Name: </label>
+        <input 
+          type="text"
+          id="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <label> Username: </label>
         <input 
           type="text"
