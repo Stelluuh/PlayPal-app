@@ -5,5 +5,5 @@ class User < ApplicationRecord
     has_many :activities, through: :schedules
    
     validates :name, :username, :password, :password_confirmation, presence: true
-    validates :username, unique: true
+    validates :username, uniqueness: true
 end
