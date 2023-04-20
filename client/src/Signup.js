@@ -4,6 +4,7 @@ import { UserContext } from './context/AuthContext'
 const Signup = () => {
   const [name, setName] = useState("")
   const [username, setUsername] = useState("")
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [passwordConfirmation, setPasswordConfirmation] = useState("")
   const [errorsList, setErrorsList] = useState([])
@@ -18,6 +19,7 @@ const Signup = () => {
       body: JSON.stringify({
         name: name,
         username: username,
+        email: email,
         password: password,
         password_confirmation: passwordConfirmation
       })
@@ -25,9 +27,8 @@ const Signup = () => {
     .then(response => response.json())
     .then(user => {
       if (!user.errors) {
-        signup(user) //this puts it into state
+        signup(user) //this puts it into state. We are sending the user that just signed up into signup in our AuthContext.js file.
       } else {
-        setName('')
         setUsername('')
         setPassword('')
         setPasswordConfirmation('')
@@ -44,7 +45,7 @@ const Signup = () => {
         <label> Name: </label>
         <input 
           type="text"
-          id="Name"
+          id="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
@@ -54,6 +55,13 @@ const Signup = () => {
           id="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+        <label> Email(optional): </label>
+        <input 
+          type="text"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <br/>
         <label> Password: </label>
