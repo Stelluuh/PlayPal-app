@@ -25,14 +25,14 @@ const Signup = () => {
     .then(response => response.json())
     .then(user => {
       if (!user.errors) {
-        signup(user)
+        signup(user) //this puts it into state
       } else {
         setName('')
         setUsername('')
         setPassword('')
         setPasswordConfirmation('')
-        const errorLis = user.errors.map(e => <li>{e}</li>)
-        setErrorsList(errorLis)
+        const allErrors = user.errors.map(e => <li>{e}</li>)
+        setErrorsList(allErrors)
       }
     })
   }
