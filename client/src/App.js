@@ -10,9 +10,9 @@ import Navbar from './Navbar';
 
 
 function App() {
-  return (
-    <div className="App">
-      <UserProvider>
+  return ( 
+    <div className="App"> 
+      <UserProvider>  {/* This provides GLOBAL STATE. If i want to use my userContext values, then I have to wrap this around the components that I want it to be accessed in. */}
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
@@ -25,3 +25,4 @@ function App() {
 }
 
 export default App;
+
