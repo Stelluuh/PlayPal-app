@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    
+    
     def create
         #when a user signs up 
         user = User.create(user_params)
