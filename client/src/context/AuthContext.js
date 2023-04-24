@@ -1,14 +1,15 @@
 import React, { useState, useEffect, createContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //This will create a new context object with a default value of null
 const UserContext = createContext();
 
 //this component wraps the rest of our application and provides the authentication context to all of its children. So we created this UserProvider that is wrapped around our application. It accepts a children prop wich will be the component that it wraps.
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
     const [loggedIn, setLoggedIn] = useState(false) //add loggedIn Flag
     
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     
     useEffect(() => {
         fetch("/me")
@@ -22,10 +23,11 @@ const UserProvider = ({ children }) => {
     const login = () => {
         setUser(user)
         setLoggedIn(true)
+        navigate('/')
     }
 
     const logout = () => {
-        setUser(null)
+        setUser({})
         setLoggedIn(false)
     }
 

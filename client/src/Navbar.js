@@ -20,14 +20,14 @@ const Navbar = () => {
   if (loggedIn) {
     return (
       <div>
-        <h2>Hello {user.name}</h2>
+        <h2>Hello {user.username}</h2>
         <br />
         <button onClick={logoutUser}>Logout</button>
       </div>
   
     )
   } else {
-    return (
+      return (
       <div>
         <br />
         <NavLink to='/login'>
