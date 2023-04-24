@@ -3,18 +3,21 @@ import { UserContext } from './context/AuthContext'
 import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-  const { user, logout } = useContext(UserContext)
+  const { user, logout, loggedIn } = useContext(UserContext)
   const navigate = useNavigate()
 
   const logoutUser = () => {
-    fetch('/logout')
+    fetch('/logout', {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
+    })
     .then(() => {
       logout()
       navigate('/')
     })
   }
 
-  if (user) {
+  if (loggedIn) {
     return (
       <div>
         <h2>Hello {user.name}</h2>
